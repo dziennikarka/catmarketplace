@@ -9,7 +9,7 @@ import javax.persistence.Id;
 public class Cat {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private long id;
+    private Long catId;
     private String name;
     private String description;
     private int age;
@@ -29,8 +29,12 @@ public class Cat {
         this.price = price;
     }
 
-    public long getId() {
-        return id;
+    public Long getCatId() {
+        return catId;
+    }
+
+    public void setCatId(Long catId) {
+        this.catId = catId;
     }
 
     public String getName() {
@@ -68,7 +72,7 @@ public class Cat {
     @Override
     public String toString() {
         return "Cat{" +
-                "id=" + id +
+                "id=" + catId +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", age=" + age +

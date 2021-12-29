@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html"; charset="UTF-8">
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+    <title>Catlist</title>
+</head>
+<body>
+    <h5>Cats</h5>
+    <table class="table table-primary table-striped">
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Age</th>
+            <th>Price</th>
+        </tr>
+        <tbody>
+            <tr th:each="cat: ${cats}">
+                <td th:text="${cat.name}"></td>
+                <td th:text="${cat.description}"></td>
+                <td th:text="${cat.age}"></td>
+                <td th:text="${cat.price}"></td>
+                 <td><a th:href="@{/edit/{id}(id=${cat.catId})}" class="btn btn-outline-dark">Edit</a></td>
+                <td><a th:href="@{/delete/{id}(id=${cat.catId})}" class="btn btn-outline-danger">Delete</a></td>
+
+            </tr>
+        </tbody>
+    </table>
+     <a href="/add" class="btn btn-outline-primary btn-lg">Add Cat</a>
+</body>
+</html>

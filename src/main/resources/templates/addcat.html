@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html"; charset="UTF-8">
+    <title>Cats</title>
+</head>
+    <body>
+        <div>
+            <h2>Add a cat</h2>
+            <div>
+                <form th:object="${cat}" action="/save" method="post">
+                    <input type="hidden" id="catId" th:field="*{catId}"/>
+                    <label for="name">Name</label>
+                    <input type="text" id="name" th:field="*{name}"/>
+                    <label for="age">Age</label>
+                    <input type="number" id="age" th:field="*{age}"/>
+                    <label for="description">Description</label>
+                    <input type="text" id="description" th:field="*{description}"/>
+                    <label for="price">Price</label>
+                    <input type="number" id="price" th:field="*{price}"/>
+                    <input type="submit" value="Save"/>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
