@@ -9,26 +9,26 @@
     <body>
         <div class="maintheme">
             <h2>Add a cat</h2>
-            <div style="width: 50%; height: 50%; margin-left: 50px;">
+            <div class="formstyle">
                 <form th:object="${cat}" action="/save" method="post">
-                    <input type="hidden" id="catId" th:field="*{catId}"/>
+                    <input type="hidden" id="catId" th:field="*{catId}">
                     <div class="mb-3">
                         <label for="name" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="name" th:field="*{name}"/>
+                        <input type="text" class="form-control" id="name" th:field="*{name}">
                     </div>
                     <div class="mb-3">
                         <label for="age" class="form-label">Age</label>
-                        <input type="number" class="form-control" id="age" th:field="*{age}"/>
+                        <input type="number" class="form-control" id="age" th:field="*{age}">
                     </div>
                     <div class="mb-3">
                         <label for="description" class="form-label">Description</label>
-                        <input type="text" class="form-control" id="description" th:field="*{description}"/>
+                        <textarea type="text" class="form-control" id="description" rows="5" th:field="*{description}"></textarea>
                     </div>
                     <div class="mb-3">
                         <label for="price" class="form-label">Price</label>
-                        <input type="number" class="form-control" id="price" th:field="*{price}"/>
+                        <input type="number" class="form-control" id="price" th:field="*{price}">
                     </div>
-                    <input type="submit" value="Save"/>
+                    <input type="submit" class="btn btn-outline-primary" value="Save"/>
                 </form>
             </div>
         </div>

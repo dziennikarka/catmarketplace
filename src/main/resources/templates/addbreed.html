@@ -2,8 +2,22 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="text/html"; charset="UTF-8">
+    <link rel="stylesheet" href="css/style.css">
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
     <title>Breed Form</title>
 </head>
 <body>
+    <div class="maintheme">
+        <h2>Add breed</h2>
+        <div class="formstyle">
+            <form th:object="${breed}" action="/savebreed" method="post">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="name" th:field="*{name}">
+                </div>
+                <input type="submit" class="btn btn-outline-primary" value="Save">
+            </form>
+        </div>
+    </div>
 </body>
 </html>

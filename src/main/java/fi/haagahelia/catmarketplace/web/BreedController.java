@@ -1,5 +1,6 @@
 package fi.haagahelia.catmarketplace.web;
 
+import fi.haagahelia.catmarketplace.domain.Breed;
 import fi.haagahelia.catmarketplace.domain.BreedRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +17,18 @@ public class BreedController {
     public String breedList(Model model){
         model.addAttribute("breeds", repository.findAll());
         return "breedlist";
+    }
+
+    @RequestMapping(value="/addbreed", method = RequestMethod.GET)
+    public String addBreed(Model model){
+        model.addAttribute("breed", new Breed());
+        return "addbreed";
+    }
+
+    @RequestMapping(value="/savebreed", method = RequestMethod.POST)
+    public String saveBreed(Breed breed){
+        repository.save(breed);
+        return "redirect:/breeds";
     }
 
 }
