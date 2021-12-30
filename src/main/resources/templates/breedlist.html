@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html"; charset="UTF-8">
+    <link rel="stylesheet" href="css/style.css">
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+    <title>Breed list</title>
+</head>
+<body>
+    <div class="maintheme">
+    <h3>Breed listed in the Database</h3>
+    <table class="table table-hover">
+        <tr>
+            <th>Id</th>
+            <th>Breed</th>
+        </tr>
+        <tbody>
+            <tr th:each="breed : ${breeds}">
+                <td th:text="${breed.breedId}"></td>
+                <td th:text="${breed.name}"></td>
+            </tr>
+        </tbody>
+    </table>
+    <a href="/addbreed" class="btn btn-success">Add Breed</a>
+    </div>
+</body>
+</html>

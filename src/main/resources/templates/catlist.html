@@ -2,12 +2,14 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="text/html"; charset="UTF-8">
+     <link rel="stylesheet" href="css/style.css">
     <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
-    <title>Catlist</title>
+    <title>Cat List</title>
 </head>
 <body>
+    <div class="maintheme">
     <h5>Cats</h5>
-    <table class="table table-primary table-striped">
+    <table class="table table-hover">
         <tr>
             <th>Name</th>
             <th>Description</th>
@@ -27,5 +29,6 @@
         </tbody>
     </table>
      <a href="/add" class="btn btn-outline-primary btn-lg">Add Cat</a>
+     </div>
 </body>
 </html>
