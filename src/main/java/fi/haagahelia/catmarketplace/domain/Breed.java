@@ -1,9 +1,7 @@
 package fi.haagahelia.catmarketplace.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Breed {
@@ -11,6 +9,9 @@ public class Breed {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long breedId;
     private String name;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "breed")
+    private List<Cat> cats;
 
     public Breed() {
     }
@@ -33,6 +34,14 @@ public class Breed {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<Cat> getCats() {
+        return cats;
+    }
+
+    public void setCats(List<Cat> cats) {
+        this.cats = cats;
     }
 
     @Override

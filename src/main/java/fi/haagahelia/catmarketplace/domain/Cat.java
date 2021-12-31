@@ -1,9 +1,6 @@
 package fi.haagahelia.catmarketplace.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Cat {
@@ -14,20 +11,26 @@ public class Cat {
     private String description;
     private int age;
     private double price;
+    @ManyToOne
+    @JoinColumn(name = "breedId")
+    private Breed breed;
 
     public Cat() {
         this.name = null;
         this.description = null;
         this.age = 0;
         this.price = 0.0;
+        this.breed = null;
     }
 
-    public Cat(String name, String description, int age, double price) {
+    public Cat(String name, String description, int age, double price, Breed breed) {
         this.name = name;
         this.description = description;
         this.age = age;
         this.price = price;
+        this.breed = breed;
     }
+
 
     public Long getCatId() {
         return catId;
@@ -67,6 +70,14 @@ public class Cat {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public Breed getBreed() {
+        return breed;
+    }
+
+    public void setBreed(Breed breed) {
+        this.breed = breed;
     }
 
     @Override

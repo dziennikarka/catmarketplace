@@ -22,9 +22,9 @@
                 <td th:text="${cat.description}"></td>
                 <td th:text="${cat.age}"></td>
                 <td th:text="${cat.price}"></td>
-                 <td><a th:href="@{/edit/{id}(id=${cat.catId})}" class="btn btn-outline-dark">Edit</a></td>
+                <td th:text="${cat.breed.name}"></td>
+                <td><a th:href="@{/edit/{id}(id=${cat.catId})}" class="btn btn-outline-dark">Edit</a></td>
                 <td><a th:href="@{/delete/{id}(id=${cat.catId})}" class="btn btn-outline-danger">Delete</a></td>
-
             </tr>
         </tbody>
     </table>

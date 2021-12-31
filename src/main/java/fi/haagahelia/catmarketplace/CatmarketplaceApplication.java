@@ -32,9 +32,9 @@ public class CatmarketplaceApplication {
 			repo.save(b2);
 
 			log.info("save some sample cats");
-			Cat c = new Cat("Bobby", "curious and elegant", 5, 20.0);
-			Cat c1 = new Cat("Floppy", "calm and always sleeping", 10, 50.0);
-			Cat c2 = new Cat("Prince", "clever and lazy", 2, 500.0);
+			Cat c = new Cat("Bobby", "curious and elegant", 5, 20.0, repo.findByName("Bengal").get(0));
+			Cat c1 = new Cat("Floppy", "calm and always sleeping", 10, 50.0, repo.findByName("American Shorthair").get(0));
+			Cat c2 = new Cat("Prince", "clever and lazy", 2, 500.0, repo.findByName("Bengal").get(0));
 
 			repository.save(c);
 			repository.save(c1);

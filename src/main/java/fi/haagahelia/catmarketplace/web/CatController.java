@@ -1,5 +1,6 @@
 package fi.haagahelia.catmarketplace.web;
 
+import fi.haagahelia.catmarketplace.domain.BreedRepository;
 import fi.haagahelia.catmarketplace.domain.Cat;
 import fi.haagahelia.catmarketplace.domain.CatRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class CatController {
     @Autowired
     private CatRepository repository;
+
+    @Autowired
+    private BreedRepository breedRepository;
 
     @RequestMapping(value="/index", method= RequestMethod.GET)
     public String getCat(){
@@ -34,6 +38,7 @@ public class CatController {
     @RequestMapping(value="/add")
     public String addCat(Model model){
         model.addAttribute("cat", new Cat());
+        model.addAttribute("breeds", breedRepository.findAll());
         return "addcat";
     }
 
@@ -55,6 +60,7 @@ public class CatController {
     @RequestMapping(value="/edit/{id}", method = RequestMethod.GET)
     public String editCat(@PathVariable("id") Long catId, Model model){
         model.addAttribute("cat", repository.findById(catId));
+        model.addAttribute("breeds", breedRepository.findAll());
         return "addcat";
     }
 }

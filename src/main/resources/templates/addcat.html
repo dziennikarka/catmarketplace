@@ -2,8 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="text/html"; charset="UTF-8">
-    <link rel="stylesheet" href="css/style.css">
-    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+    <link rel="stylesheet" href="/css/style.css">
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css"/>
     <title>Cat Form</title>
 </head>
     <body>
@@ -27,6 +27,11 @@
                     <div class="mb-3">
                         <label for="price" class="form-label">Price</label>
                         <input type="number" class="form-control" id="price" th:field="*{price}">
+                    </div>
+                    <div class="mb-3">
+                        <select id="breedlist" th:field="*{breed}" class="form-control">
+                            <option th:each="breed : ${breeds}" th:value="${breed.breedId}" th:text="${breed.name}"></option>
+                        </select>
                     </div>
                     <input type="submit" class="btn btn-outline-primary" value="Save"/>
                 </form>
