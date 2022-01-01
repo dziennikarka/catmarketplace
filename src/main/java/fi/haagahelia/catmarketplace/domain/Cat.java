@@ -1,5 +1,7 @@
 package fi.haagahelia.catmarketplace.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 @Entity
@@ -12,6 +14,7 @@ public class Cat {
     private int age;
     private double price;
     @ManyToOne
+    @JsonIgnoreProperties("cats")
     @JoinColumn(name = "breedId")
     private Breed breed;
 

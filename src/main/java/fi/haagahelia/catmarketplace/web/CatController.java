@@ -9,6 +9,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class CatController {
@@ -63,4 +67,16 @@ public class CatController {
         model.addAttribute("breeds", breedRepository.findAll());
         return "addcat";
     }
+
+    //RESTful methods start here
+    @RequestMapping(value="/cats", method = RequestMethod.GET)
+    public @ResponseBody List<Cat> catListRest(){
+        return (List<Cat>) repository.findAll();
+    }
+
+    @RequestMapping(value="/cats/{id}", method = RequestMethod.GET)
+    public @ResponseBody Optional<Cat> findCatRest(@PathVariable("id") Long catId){
+        return repository.findById(catId);
+    }
+    //RESTful methods end here
 }
