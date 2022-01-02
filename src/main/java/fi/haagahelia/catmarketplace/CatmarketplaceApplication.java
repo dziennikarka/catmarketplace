@@ -1,9 +1,6 @@
 package fi.haagahelia.catmarketplace;
 
-import fi.haagahelia.catmarketplace.domain.Breed;
-import fi.haagahelia.catmarketplace.domain.BreedRepository;
-import fi.haagahelia.catmarketplace.domain.Cat;
-import fi.haagahelia.catmarketplace.domain.CatRepository;
+import fi.haagahelia.catmarketplace.domain.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -20,8 +17,15 @@ public class CatmarketplaceApplication {
 	}
 
 	@Bean
-	public CommandLineRunner demo(BreedRepository repo, CatRepository repository){
+	public CommandLineRunner demo(BreedRepository repo, CatRepository repository, UserRepository urepository){
 		return(args) ->{
+			log.info("Create several users");
+			User user1 = new User("user", "user@gmail.com", "$2a$10$1e8DMnOwzXWrXjV1KU5kaujiUz5HVtzg7Wd3NcW7w189voMGQJlMy", "USER");
+			User user2 = new User("admin", "admin@gmail.com", "$2a$10$n.45QrmlT6j2Hx2CszYk9e76lFI2zXHTbAbWWPkUH6lZppU45Mze2", "ADMIN");
+
+			urepository.save(user1);
+			urepository.save(user2);
+
 			log.info("save a couple of breeds");
 			Breed b = new Breed("American Shorthair");
 			Breed b1 = new Breed("Bengal");

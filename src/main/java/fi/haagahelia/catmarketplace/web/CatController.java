@@ -4,6 +4,7 @@ import fi.haagahelia.catmarketplace.domain.BreedRepository;
 import fi.haagahelia.catmarketplace.domain.Cat;
 import fi.haagahelia.catmarketplace.domain.CatRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,6 +34,7 @@ public class CatController {
         return "catlist";
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @RequestMapping(value="/delete/{id}", method = RequestMethod.GET)
     public String deleteCat(@PathVariable("id") Long catId, Model model){
         repository.deleteById(catId);
@@ -61,6 +63,7 @@ public class CatController {
         return "redirect:/catlist";
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @RequestMapping(value="/edit/{id}", method = RequestMethod.GET)
     public String editCat(@PathVariable("id") Long catId, Model model){
         model.addAttribute("cat", repository.findById(catId));
