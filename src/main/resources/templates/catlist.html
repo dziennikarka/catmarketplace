@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta http-equiv="Content-Type" content="text/html"; charset="UTF-8">
      <link rel="stylesheet" href="css/style.css">
@@ -9,12 +9,22 @@
 <body>
     <div class="maintheme">
     <h5>Cats</h5>
+    <div class="col-md-4">
+		<h3 th:inline="text">Welcome [[${#httpServletRequest.remoteUser}]]</h3>
+	</div>
+     <div class="col-md-4" style="padding:20px 0">
+         <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Sign Out" class="btn btn-info"/>
+         </form>
+     </div>
     <table class="table table-hover">
         <tr>
             <th>Name</th>
             <th>Description</th>
             <th>Age</th>
             <th>Price</th>
+            <th>Breed</th>
+            <th sec:authorize="hasRole('ADMIN')"> </th>
         </tr>
         <tbody>
             <tr th:each="cat: ${cats}">
@@ -23,8 +33,8 @@
                 <td th:text="${cat.age}"></td>
                 <td th:text="${cat.price}"></td>
                 <td th:text="${cat.breed.name}"></td>
-                <td><a th:href="@{/edit/{id}(id=${cat.catId})}" class="btn btn-outline-dark">Edit</a></td>
-                <td><a th:href="@{/delete/{id}(id=${cat.catId})}" class="btn btn-outline-danger">Delete</a></td>
+                <td sec:authorize="hasRole('ADMIN')"><a th:href="@{/edit/{id}(id=${cat.catId})}" class="btn btn-outline-dark">Edit</a></td>
+                <td sec:authorize="hasRole('ADMIN')"><a th:href="@{/delete/{id}(id=${cat.catId})}" class="btn btn-outline-danger">Delete</a></td>
             </tr>
         </tbody>
     </table>

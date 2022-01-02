@@ -79,4 +79,9 @@ public class CatController {
         return repository.findById(catId);
     }
     //RESTful methods end here
+
+    @RequestMapping(value="/login")
+    public String login(){
+        return "login";
+    }
 }
