@@ -30,6 +30,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
+        .csrf().disable()
         .authorizeRequests().antMatchers("/css/**", "/index").permitAll() // Enable css when logged out
         .and()
         .authorizeRequests().anyRequest().authenticated()
@@ -41,6 +42,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
           .and()
       .logout()
           .permitAll();
+
     }
 
     @Bean
