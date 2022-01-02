@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="text/html"; charset="UTF-8">
-    <link rel="stylesheet" href="css/style.css">
-    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
-    <title>Cat List</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+    <title>About</title>
 </head>
 <!---HEADER STARTS HERE -->
 <header>
@@ -45,37 +45,11 @@
 </header>
 <body>
     <div class="maintheme">
-    <h5>Cats</h5>
-    <div class="col-md-4">
-		<h3 th:inline="text">Welcome [[${#httpServletRequest.remoteUser}]]</h3>
-	</div>
-     <div class="col-md-4" style="padding:20px 0">
-         <form th:action="@{/logout}" method="post">
-            <input type="submit" value="Sign Out" class="btn btn-info"/>
-         </form>
-     </div>
-    <table class="table table-hover">
-        <tr>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Age</th>
-            <th>Price</th>
-            <th>Breed</th>
-            <th sec:authorize="hasAuthority('ADMIN')"> </th>
-        </tr>
-        <tbody>
-            <tr th:each="cat: ${cats}">
-                <td th:text="${cat.name}"></td>
-                <td th:text="${cat.description}"></td>
-                <td th:text="${cat.age}"></td>
-                <td th:text="${cat.price}"></td>
-                <td th:text="${cat.breed.name}"></td>
-                <td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/edit/{id}(id=${cat.catId})}" class="btn btn-outline-dark">Edit</a></td>
-                <td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/delete/{id}(id=${cat.catId})}" class="btn btn-outline-danger">Delete</a></td>
-            </tr>
-        </tbody>
-    </table>
-     <a href="/add" class="btn btn-outline-primary btn-lg">Add Cat</a>
-     </div>
+        <h5>About Pur-r-r-rApp</h5>
+        <h7>Description</h7>
+        <p>Cat market place that allows you to list your cat for sale/to give away and browse cats registered at the website</p>
+        <h7>Project by Irina Tregub</h7><br/>
+        <h7>Photo credits: wwww.pexels.com</h7>
+    </div>
 </body>
 </html>

@@ -87,4 +87,9 @@ public class CatController {
     public String login(){
         return "login";
     }
+
+    @RequestMapping(value="/about")
+    public String about(){
+        return "about";
+    }
 }
