@@ -10,7 +10,7 @@ public class User {
     private Long userId;
 
     @Column(name="username", nullable = false, unique = true)
-    private String userName;
+    private String username;
 
     @Column(name="email", nullable = false, unique = true)
     private String email;
@@ -24,8 +24,8 @@ public class User {
     public User() {
     }
 
-    public User(String userName, String email, String passwordHash, String role) {
-        this.userName = userName;
+    public User(String username, String email, String passwordHash, String role) {
+        this.username = username;
         this.email = email;
         this.passwordHash = passwordHash;
         this.role = role;
@@ -35,8 +35,8 @@ public class User {
         return userId;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
     public String getEmail() {
@@ -51,8 +51,8 @@ public class User {
         return role;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String userName) {
+        this.username = userName;
     }
 
     public void setEmail(String email) {
@@ -71,7 +71,7 @@ public class User {
     public String toString() {
         return "User{" +
                 "userId=" + userId +
-                ", userName='" + userName + '\'' +
+                ", userName='" + username + '\'' +
                 ", email='" + email + '\'' +
                 ", passwordHash='" + passwordHash + '\'' +
                 ", role='" + role + '\'' +
