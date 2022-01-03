@@ -10,14 +10,14 @@
 <div class="container maintheme">
 	<h1>Sign-up</h1>
      <div class="col-md-4">
-		<form th:object="${signupform}" th:action="@{/saveuser}" action="#" method="post">
+		<form th:object="${signupform}" action="/saveuser" method="post">
 			<div>
 				<label> Username :<input type="text" th:field="*{username}" class="form-control"/></label>
 				<p th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username Error</p>
 			</div>
             <div>
 				<label> E-mail :<input type="text" th:field="*{email}" class="form-control"/></label>
-				<p th:if="${#fields.hasErrors('username')}" th:errors="*{email}">Username Error</p>
+				<p th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</p>
 			</div>
 			<div>
 				<label> Password :<input type="password" th:field="*{password}" class="form-control"/></label>
