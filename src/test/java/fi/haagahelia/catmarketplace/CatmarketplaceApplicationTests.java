@@ -29,7 +29,9 @@ class CatmarketplaceApplicationTests {
 
 	@Test
 	void contextLoads() throws Exception{
-		//assertThat(breedController).
+		assertThat(breedController).isNotNull();
+		assertThat(catController).isNotNull();
+		assertThat(userController).isNotNull();
 	}
 
 }
