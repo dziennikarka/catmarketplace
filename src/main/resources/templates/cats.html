@@ -1,79 +1,99 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta http-equiv="Content-Type" content="text/html"; charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html" ; charset="UTF-8">
     <link rel="stylesheet" href="/css/style.css">
     <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css"/>
     <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#locales").change(function () {
+                var selectedOption = $('#locales').val();
+                if (selectedOption != '') {
+                    window.location.replace('/index?lang=' + selectedOption);
+                }
+            });
+        });
+    </script>
     <title>Cats</title>
 </head>
 <!---HEADER STARTS HERE -->
 <header>
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">Pur-r-rApp</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/index">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/catlist">Cat Listing</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/breeds">Breed Listing</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/add">Add cat</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/addbreed">Add breed</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/about">About</a>
-            </li>
-          </ul>
-          <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-          </form>
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Pur-r-rApp</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/index">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/catlist">Cat Listing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/breeds">Breed Listing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/add">Add cat</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/addbreed">Add breed</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">About</a>
+                    </li>
+                </ul>
+                <span th:text="#{lang.change}"></span>:
+                <select id="locales">
+                    <option value=""></option>
+                    <option value="en" th:text="#{lang.eng}"></option>
+                    <option value="fi" th:text="#{lang.fi}"></option>
+                </select>
+            </div>
         </div>
-      </div>
     </nav>
 </header>
 <!--HEADER ENDS HERE --->
 <body>
-    <!--CAROUSEL STARTS HERE -->
-    <div id="carouselStyle" class="carousel slide" data-bs-ride="carousel">
-      <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-      </div>
-      <div class="carousel-inner">
+<!--CAROUSEL STARTS HERE -->
+<div id="carouselStyle" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
         <div class="carousel-item active">
-          <img src="/images/cat3.jpg" class="d-block w-100" alt="...">
+            <img src="/images/cat3.jpg" class="d-block w-100" alt="...">
         </div>
         <div class="carousel-item">
-          <img src="/images/cat5.jpg" class="d-block w-100" alt="...">
+            <img src="/images/cat5.jpg" class="d-block w-100" alt="...">
         </div>
         <div class="carousel-item">
-          <img src="/images/sleeping-cat.jpg" class="d-block w-100" alt="...">
+            <img src="/images/sleeping-cat.jpg" class="d-block w-100" alt="...">
         </div>
-      </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
-      </button>
-    </div>
-    <!--CAROUSEL ENDS HERE -->
-    <h5>Welcome to the Pur-r-r-App!</h5>
+    </button>
+</div>
+<!--CAROUSEL ENDS HERE -->
+<h5 th:text="#{cats.heading}"></h5>
 </body>
 </html>

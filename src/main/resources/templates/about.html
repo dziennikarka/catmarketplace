@@ -1,55 +1,71 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta http-equiv="Content-Type" content="text/html"; charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html" ; charset="UTF-8">
     <link rel="stylesheet" href="/css/style.css">
-    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#locales").change(function () {
+                var selectedOption = $('#locales').val();
+                if (selectedOption != '') {
+                    window.location.replace('/about?lang=' + selectedOption);
+                }
+            });
+        });
+    </script>
     <title>About</title>
 </head>
 <!---HEADER STARTS HERE -->
 <header>
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">Pur-r-rApp</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/index">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/catlist">Cat Listing</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/breeds">Breed Listing</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/add">Add cat</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/addbreed">Add breed</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/about">About</a>
-            </li>
-          </ul>
-          <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-          </form>
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Pur-r-rApp</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/index">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/catlist">Cat Listing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/breeds">Breed Listing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/add">Add cat</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/addbreed">Add breed</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">About</a>
+                    </li>
+                </ul>
+                <span th:text="#{lang.change}"></span>:
+                <select id="locales">
+                    <option value=""></option>
+                    <option value="en" th:text="#{lang.eng}"></option>
+                    <option value="fi" th:text="#{lang.fi}"></option>
+                </select>
+            </div>
         </div>
-      </div>
     </nav>
 </header>
 <body>
-    <div class="maintheme">
-        <h5>About Pur-r-r-rApp</h5>
-        <h7>Description</h7>
-        <p>Cat marketplace that allows you to list your cat for sale/to give away and browse cats registered at the website</p>
-        <h7>Project by Irina Tregub</h7><br/>
-        <h7>Photo credits: wwww.pexels.com</h7>
-    </div>
+<div class="maintheme">
+    <h5 th:text="#{about.heading}"></h5>
+    <h7 th:text="#{about.description.heading}"></h7>
+    <p th:text="#{about.description.text}"></p>
+    <h7 th:text="#{about.author}"></h7>
+    <br/>
+    <h7 th:text="#{about.photo}"></h7>
+</div>
 </body>
 </html>
