@@ -56,6 +56,7 @@ public class CatController {
             dbCat.setDescription(cat.getDescription());
             dbCat.setAge(cat.getAge());
             dbCat.setPrice(cat.getPrice());
+            dbCat.setBreed(cat.getBreed());
             repository.save(dbCat);
         }else{
              repository.save(cat);
